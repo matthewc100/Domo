@@ -1,0 +1,34 @@
+--- STEP 1. We have 2 datasets; the first one is the full set of SFDC users - past and present - and the second is the list of klue users.  
+--- We'll join the two tables based on the SFDC id, which is unique, and keep all the SFDC users.  So some klue fields will be blank.  
+--- We'll fill those in later.  Later we can add in the session data, using the Klue id, which is also unique.  
+
+SELECT sfdc.*, klue.id AS klue_id, klue.sfdc_id, klue."Has Klue Acct"
+FROM prod_dpad_sfdc_users sfdc
+
+LEFT JOIN sfdc_users_with_klue_accounts klue ON (klue.sfdc_id = sfdc.id)
+
+GROUP BY
+country,
+countrycode,
+dell_employee_number__c,
+sfdc.email,
+sfdc.firstname,
+sfdc.id,
+sfdc.lastname,
+sfdc.name,
+postalcode,
+state,
+statecode,
+street,
+user_region__c,
+user_sub_region__c,
+employeenumber,
+employee_number__c,
+userroleid,
+usertype,
+username,
+_batch_id_,
+_batch_last_run_,
+klue_id,
+sfdc_id,
+"has klue acct"
