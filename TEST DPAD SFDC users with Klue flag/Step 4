@@ -1,0 +1,5 @@
+--- STEP 4.  Fill in the null values
+
+UPDATE klue_flag_with_session_and_demographic_data 
+SET curator = 'false'
+WHERE curator IS NULL
