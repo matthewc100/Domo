@@ -1,0 +1,7 @@
+--- STEP 4b. 
+
+
+SELECT deals.*, klue."Has Klue Acct"
+FROM prod_dpas_sfdc_deals_with_team_members deals
+LEFT JOIN klue_users_with_sfdc klue ON
+   	(klue.id = deals."teammember.userid")
