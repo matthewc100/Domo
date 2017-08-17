@@ -1,0 +1,60 @@
+--- STEP 6. for those users matched, add in their session dates and curator flag from google analytics
+
+SELECT  
+	klue.country, 
+    klue.countrycode,
+    klue.dell_employee_number__c,
+    klue.postalcode,
+    klue.state,
+	klue.statecode,
+	klue.street,
+	klue.user_region__c,
+	klue.user_sub_region__c,	
+	klue.employee_number__c,
+	klue._batch_id_,
+	klue._batch_last_run_,
+    klue.firstname,
+	klue.lastname,
+	klue.name,
+    klue.klue_id,
+	klue.id,
+	klue.employeenumber,
+	klue.email,
+	klue."has klue acct",
+
+	session.curator, 
+    session."days since last session"
+    
+FROM klue_users_only klue 
+
+LEFT JOIN klue_exit_and_enter_data session ON (klue.klue_id = session.id)
+GROUP BY 
+	country, 
+    countrycode,
+    dell_employee_number__c,
+    postalcode,
+    state,
+	statecode,
+	street,
+	user_region__c,
+	user_sub_region__c,	
+	employeenumber,
+	employee_number__c,
+	userroleid,
+	usertype,
+	username,
+	klue._batch_id_,
+	klue._batch_last_run_,
+    klue.id,
+    klue.klue_id,
+    klue.sfdc_id,
+    firstname,
+	lastname,
+	klue.name,
+	klue.klue_id,
+	employeenumber,
+	klue.email,
+	"has klue acct",
+	curator,
+	"days since last session"
+
