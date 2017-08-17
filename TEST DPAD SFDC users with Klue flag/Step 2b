@@ -1,0 +1,5 @@
+--- STEP 2b: fill in the Null values
+
+UPDATE klue_flag_with_session_data 
+SET "Has Klue Acct" = 'N', klue_id = '0', curator = 'N'
+WHERE "Has Klue Acct" IS NULL
